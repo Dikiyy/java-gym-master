@@ -30,6 +30,11 @@ public class Coach {
         return Objects.hash(surname, name, middleName);
     }
 
+    @Override
+    public String toString() {
+        return surname + " " + name + " " + middleName;
+    }
+
     public String getSurname() {
         return surname;
     }
@@ -41,4 +46,5 @@ public class Coach {
     public String getMiddleName() {
         return middleName;
     }
+
 }
