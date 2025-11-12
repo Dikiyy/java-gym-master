@@ -6,14 +6,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TimetableCountByCoachesTest {
+public class TimetableCountByCoachesTest {
 
     private static TrainingSession Group(Group group, Coach coach, DayOfWeek dayOfWeek, int hours, int minutes) {
         return new TrainingSession(group, coach, dayOfWeek, new TimeOfDay(hours, minutes));
     }
 
     @Test
-    void returnsEmptyWhenNoSessions() {
+    public void returnsEmptyWhenNoSessions() {
         Timetable timetable = new Timetable();
         List<CounterOfTrainings> res = timetable.getCountByCoaches();
         assertNotNull(res);
@@ -21,7 +21,7 @@ class TimetableCountByCoachesTest {
     }
 
     @Test
-    void countsAndSortsByDescendingCount() {
+    public void countsAndSortsByDescendingCount() {
         Timetable t = new Timetable();
 
         Group child = new Group("Детская", Age.CHILD, 60);
@@ -58,7 +58,7 @@ class TimetableCountByCoachesTest {
     }
 
     @Test
-    void tieBreaksByCoachFullNameAscending() {
+    public void tieBreaksByCoachFullNameAscending() {
         Timetable t = new Timetable();
 
         Group g = new Group("Группа", Age.ADULT, 60);
@@ -83,7 +83,7 @@ class TimetableCountByCoachesTest {
     }
 
     @Test
-    void gettersAndToStringWork() {
+    public void gettersAndToStringWork() {
         Coach coach = new Coach("Torebek", "Diar", "Azamatovich");
         CounterOfTrainings c = new CounterOfTrainings(coach, 5);
 

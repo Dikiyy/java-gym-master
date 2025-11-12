@@ -16,21 +16,18 @@ public class Timetable {
         dayMap.get(timeOfDay).add(trainingSession);
     }
 
-    public List<TrainingSession> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
+    public Map<TimeOfDay, List<TrainingSession>> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
         TreeMap<TimeOfDay, List<TrainingSession>> dayMap = timetable.get(dayOfWeek);
         if (dayMap == null || dayMap.isEmpty()) {
-            return Collections.emptyList();
+            return Collections.emptyMap();
         }
-        List<TrainingSession> result = new ArrayList<>();
-        for (List<TrainingSession> trainingSessions : dayMap.values()) {
-            result.addAll(trainingSessions);
-        }
-        return result;
+        TreeMap<TimeOfDay, List<TrainingSession>> result = new TreeMap<>();
+        return dayMap;
     }
 
     public List<TrainingSession> getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
         TreeMap<TimeOfDay, List<TrainingSession>> dayMap = timetable.get(dayOfWeek);
-        if (dayMap.isEmpty()) {
+        if (dayMap == null || dayMap.isEmpty()) {
             return Collections.emptyList();
         }
         return dayMap.getOrDefault(timeOfDay, Collections.emptyList());
